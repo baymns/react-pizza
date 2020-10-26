@@ -82,7 +82,7 @@ export const PizzaCardStyles = styled.div`
         font-weight: bold;
       }
       
-      &-btn, &-btn-empty {
+      &-btn, &-btn_empty {
         width: 155px;
         height: 40px;
         display: flex;
@@ -96,12 +96,12 @@ export const PizzaCardStyles = styled.div`
         font-weight: bold;
         font-family: 'Proxima Nova';
         color: #eb5a1e;
-        &-empty {
+        &_empty {
           width: 132px;
           height: 40px;
           justify-content: center;
         }
-        &-icon-empty {
+        &-icon_empty {
           margin-right: 7px;
           svg path {
             fill: #eb5a1e;
@@ -111,8 +111,15 @@ export const PizzaCardStyles = styled.div`
           background-color: #eb5a1e;
           color: #fff;
           cursor: pointer;
-          .card__add-btn-icon svg path, .card__add-btn-icon-empty svg path {
-            fill: #fff;
+          .card__add-btn-icon svg path, .card__add-btn-icon_empty svg path {
+            fill: #fff;себя совсем в инстаграме не 
+            color: #eb5a1e;
+            background-color: #fff;
+            font-style: bold;
+          }
+          .card__add-btn-counter {
+            color: #eb5a1e;
+            background-color: #fff;
           }
         }
         &-icon {

@@ -1,8 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { HeaderStyle } from "./styles/HeaderStyles";
 import logoSvg from "../assets/logo.png";
 
 const Header = () => {
+  const {items, total} = useSelector((state) => state.main.cart);
+  
   return (
     <HeaderStyle>
       <header className="header">
@@ -17,8 +20,7 @@ const Header = () => {
         </div>
         <div className="cart-button">
           <button className="cart-button__button">
-            <div className="cart-button__sum-counter">543 ₽</div> 
-            {/* {'\u20BD'} */}
+            <div className="cart-button__sum-counter">{total} ₽</div>
             <div className="cart-button__separator"></div>
             <div className="cart-button__cart">
               <div className="cart-button__cart-icon">
@@ -53,7 +55,7 @@ const Header = () => {
                 </svg>
               </div>
               <div className="cart-button__cart-counter">
-                <span className="cart-button__cart-total">3</span>
+                <span className="cart-button__cart-total">{items.length}</span>
               </div>
             </div>
           </button>

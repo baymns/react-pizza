@@ -64,8 +64,7 @@ export const HeaderStyle = styled.div`
         font-size: 1rem;
         font-weight: bold;
         color: #fff;
-        padding: 0 8px 0 23px;
-        width: 33%;
+        width: 50%;
       }
       &__separator {
         width: 1px;
@@ -76,9 +75,8 @@ export const HeaderStyle = styled.div`
       &__cart {
         display: flex;
         flex-direction: row;
-        padding: 0 20px 0 8px;
-        width: 33%;
-
+        justify-content: center;
+        width: 50%;
         &-icon {
           padding-right: 0.5rem;
         }

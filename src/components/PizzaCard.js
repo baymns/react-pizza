@@ -1,10 +1,25 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import {
+  addPizza,
+  toggleDough,
+  toggleDiameter,
+} from "../redux/actions/actionCreators";
 
-const PizzaCard = ({ img, name, price, counter }) => {
-  console.log(img);
-  let addClass = counter
+const PizzaCard = ({ id, img, name, dough, diameter, price, counter }) => {
+  const dispatch = useDispatch();
+  const addClass = counter
     ? { parent: "card__add-btn", child: "card__add-btn-icon" }
-    : { parent: "card__add-btn-empty", child: "card__add-btn-icon-empty" };
+    : { parent: "card__add-btn_empty", child: "card__add-btn-icon_empty" };
+  const handlerAddPizza = () => {
+    dispatch(addPizza(id));
+  };
+  const handlerToggleDough = (id, type) => {
+    dispatch(toggleDough(id, type));
+  };
+  const handlerToggleDiameter = (id, type) => {
+    dispatch(toggleDiameter(id, type));
+  };
   return (
     <div className="card">
       <div className="card__img">
@@ -13,18 +28,43 @@ const PizzaCard = ({ img, name, price, counter }) => {
       <h2 className="card__name">{name}</h2>
       <div className="card__options">
         <ul>
-          <li className="active">тонкое</li>
-          <li>традиционное</li>
+          <li
+            className={dough.slim ? "active" : ""}
+            onClick={() => handlerToggleDough(id, "slim")}
+          >
+            тонкое
+          </li>
+          <li
+            className={dough.traditional ? "active" : ""}
+            onClick={() => handlerToggleDough(id, "traditional")}
+          >
+            традиционное
+          </li>
         </ul>
         <ul>
-          <li className="active">26 см.</li>
-          <li>30 см.</li>
-          <li>40 см.</li>
+          <li
+            className={diameter.small ? "active" : ""}
+            onClick={() => handlerToggleDiameter(id, "small")}
+          >
+            26 см.
+          </li>
+          <li
+            className={diameter.medium ? "active" : ""}
+            onClick={() => handlerToggleDiameter(id, "medium")}
+          >
+            30 см.
+          </li>
+          <li
+            className={diameter.large ? "active" : ""}
+            onClick={() => handlerToggleDiameter(id, "large")}
+          >
+            40 см.
+          </li>
         </ul>
       </div>
       <div className="card__add">
         <div className="card__price">от {price} ₽</div>
-        <div className={addClass.parent}>
+        <div className={addClass.parent} onClick={handlerAddPizza}>
           <div className={addClass.child}>
             <svg
               width="12"
@@ -40,7 +80,11 @@ const PizzaCard = ({ img, name, price, counter }) => {
             </svg>
           </div>
           <div className="card__add-btn-title">Добавить</div>
-          {counter ? <div className="card__add-btn-counter">{counter}</div> : ''}
+          {counter ? (
+            <div className="card__add-btn-counter">{counter}</div>
+          ) : (
+            ""
+          )}
         </div>
       </div>
     </div>
